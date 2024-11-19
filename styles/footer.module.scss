@@ -1,0 +1,71 @@
+.footer {
+  background: #064EA4;
+}
+
+.util {
+  width: 100%;
+  padding: 50px 0 40px 0;
+  border-top: 1px solid #064EA4;
+}
+
+.footer .util .inner {
+  position: relative;
+  width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer .util .inner .sitemap {
+  flex-basis: 75%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .util .inner .contactus {
+  flex-basis: 25%;
+}
+
+.footerCompanyName {
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23.2px;
+  padding-bottom: 20px;
+}
+
+.myListItem {
+  display: inline-block;
+  margin-right: 35px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.sitemapTitle {
+  font-weight: 700;
+  font-size: 33px;
+  padding-bottom: 26px;
+}
+
+.siteItem {
+  display: flex;
+  flex-direction: column;
+  margin-right: 35px;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.sitemapLink {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 40px;
+  color: white;
+  text-decoration: none;
+}
+
+.sitemapLink:hover {
+  text-decoration: underline;
+}

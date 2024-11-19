@@ -23,10 +23,22 @@ a {
 }
 
 * {
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 img {
   max-width: 100%;
   height: auto;
 }
+
+ol,
+ul,
+dl {
+  list-style: none;
+}
+
+li {
+  list-style: none;
+}
+
