@@ -1,6 +1,11 @@
 import Layout from "../components/Layout";
 import styles from "../styles/home.module.scss"; // CSS module for specific page styles
 import SwiperComponent from "../components/swiperSlider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
   const slidesContent = [
@@ -9,6 +14,86 @@ export default function Home() {
     <img className={styles.partnerSectionImg} src="/images/atlassian.png" />,
     <img className={styles.partnerSectionImg} src="/images/cloudfare.png" />,
     <img className={styles.partnerSectionImg} src="/images/vmware.png" />,
+  ];
+
+  const latestJobsSlidesContent1 = [
+    <div>asdasd</div>,
+    <div>asdasd</div>,
+    <div>asdasd</div>,
+  ];
+
+  const latestJobsSlidesContent = [
+    <div className={`${styles.jobSectionCard} ${styles.card_yellow}`}>
+      <div className={styles.programmingLang}>
+        <img src="/images/python_logo.png" className={styles.pythonLogo} />
+        <span style={{ color: "#064EA4" }}>Python</span>
+      </div>
+      <div className={styles.jobTitle}>Software Engineer</div>
+      <div className={styles.desc_location_dollar}>
+        <img src="/images/location_blue_logo.png" />
+        <span className={styles.locationText}>Londan</span>
+      </div>
+      <div className={styles.desc_location_dollar}>
+        <img src="/images/dollar_blue_logo.png" />
+        <span className={styles.locationText}>£65,000</span>
+      </div>
+      <div className={styles.desc_location_dollar} style={{ color: "#064EA4" }}>
+        Odio mi amet commodo convallis nunc. Tincidunt mauris eu egestas eget in
+        aliquam.
+      </div>
+      <button type="button" className={`btn ${styles.btnViewJob}`}>
+        View the job
+      </button>
+      <div className={styles.createdDate}>Posted on 29/08/2023</div>
+    </div>,
+    <div className={`${styles.jobSectionCard} ${styles.card_blue}`}>
+      <div className={styles.programmingLang}>
+        <img src="/images/python_logo.png" className={styles.pythonLogo} />
+        <span style={{ color: "#064EA4" }}>Python</span>
+      </div>
+      <div className={styles.jobTitle_white}>Software Engineer</div>
+      <div className={styles.desc_location_dollar}>
+        <img src="/images/location_white_logo.png" />
+        <span className={styles.locationText_White}>Londan</span>
+      </div>
+      <div className={styles.desc_location_dollar}>
+        <img src="/images/dollar_white_logo.png" />
+        <span className={styles.locationText_White}>£65,000</span>
+      </div>
+      <div className={styles.desc_location_dollar} style={{ color: "#fff" }}>
+        Odio mi amet commodo convallis nunc. Tincidunt mauris eu egestas eget in
+        aliquam.
+      </div>
+      <button type="button" className={`btn ${styles.btnViewJob}`}>
+        View the job
+      </button>
+      <div className={styles.createdDate} style={{ color: "#fff" }}>
+        Posted on 29/08/2023
+      </div>
+    </div>,
+    <div className={`${styles.jobSectionCard} ${styles.card_lightorange}`}>
+      <div className={styles.programmingLang}>
+        <img src="/images/python_logo.png" className={styles.pythonLogo} />
+        <span style={{ color: "#064EA4" }}>Python</span>
+      </div>
+      <div className={styles.jobTitle}>Software Engineer</div>
+      <div className={styles.desc_location_dollar}>
+        <img src="/images/location_blue_logo.png" />
+        <span className={styles.locationText}>Londan</span>
+      </div>
+      <div className={styles.desc_location_dollar}>
+        <img src="/images/dollar_blue_logo.png" />
+        <span className={styles.locationText}>£65,000</span>
+      </div>
+      <div className={styles.desc_location_dollar} style={{ color: "#064EA4" }}>
+        Odio mi amet commodo convallis nunc. Tincidunt mauris eu egestas eget in
+        aliquam.
+      </div>
+      <button type="button" className={`btn ${styles.btnViewJob}`}>
+        View the job
+      </button>
+      <div className={styles.createdDate}>Posted on 29/08/2023</div>
+    </div>,
   ];
 
   return (
@@ -50,108 +135,52 @@ export default function Home() {
           loop={true}
           autoplay={{ delay: 2000, disableOnInteraction: false }} // Autoplay config here
           showNavigation={false}
+          className="swiper-partner-slide"
         />
       </div>
 
       {/* Latest Jobs section */}
       <div className={styles.jobSection}>
         <h1 className={styles.jobSectionTitle}>Latest Jobs</h1>
-        <div className={styles.jobSectionRow}>
-          <div className={`${styles.jobSectionCard} ${styles.card_yellow}`}>
-            <div style={{ width: "100%" }}>
-              <div className={styles.programmingLang}>
-                <img
-                  src="/images/python_logo.png"
-                  className={styles.pythonLogo}
-                />
-                <span style={{ color: "#064EA4" }}>Python</span>
-              </div>
-              <div className={styles.jobTitle}>Software Engineer</div>
-              <div className={styles.desc_location_dollar}>
-                <img src="/images/location_blue_logo.png" />
-                <span className={styles.locationText}>Londan</span>
-              </div>
-              <div className={styles.desc_location_dollar}>
-                <img src="/images/dollar_blue_logo.png" />
-                <span className={styles.locationText}>£65,000</span>
-              </div>
-              <div
-                className={styles.desc_location_dollar}
-                style={{ color: "#064EA4" }}>
-                Odio mi amet commodo convallis nunc. Tincidunt mauris eu egestas
-                eget in aliquam.
-              </div>
-              <button type="button" className={`btn ${styles.btnViewJob}`}>
-                View the job
-              </button>
-              <div className={styles.createdDate}>Posted on 29/08/2023</div>
-            </div>
+        <div className={styles.jobSectionCont}>
+          <div className={styles.jobSectionRow}>
+            <SwiperComponent
+              slides={latestJobsSlidesContent}
+              spaceBetween={10}
+              slidesPerView={3}
+              loop={true}
+              autoplay={false}
+              showNavigation={true}
+              tableSlidesPerView={1}
+              prevEl={".jobs-button-prev"}
+              nextEl={".jobs-button-next"}
+            />
           </div>
-          <div className={`${styles.jobSectionCard} ${styles.card_blue}`}>
-            <div style={{ width: "100%" }}>
-              <div className={styles.programmingLang}>
-                <img
-                  src="/images/python_logo.png"
-                  className={styles.pythonLogo}
-                />
-                <span style={{ color: "#064EA4" }}>Python</span>
-              </div>
-              <div className={styles.jobTitle_white}>Software Engineer</div>
-              <div className={styles.desc_location_dollar}>
-                <img src="/images/location_white_logo.png" />
-                <span className={styles.locationText_White}>Londan</span>
-              </div>
-              <div className={styles.desc_location_dollar}>
-                <img src="/images/dollar_white_logo.png" />
-                <span className={styles.locationText_White}>£65,000</span>
-              </div>
-              <div
-                className={styles.desc_location_dollar}
-                style={{ color: "#fff" }}>
-                Odio mi amet commodo convallis nunc. Tincidunt mauris eu egestas
-                eget in aliquam.
-              </div>
-              <button type="button" className={`btn ${styles.btnViewJob}`}>
-                View the job
+
+          <div className="d-flex justify-content-between align-items-center">
+            <div className={styles.jobSection_button}>
+              <button className={`jobs-button-prev ${styles.btnIcon}`}>
+                <span className={styles.iconSpan}>
+                  <FontAwesomeIcon
+                    icon={faChevronLeft}
+                    className={styles.icon}
+                  />
+                </span>
               </button>
-              <div className={styles.createdDate} style={{ color: "#fff" }}>
-                Posted on 29/08/2023
-              </div>
-            </div>
-          </div>
-          <div
-            className={`${styles.jobSectionCard} ${styles.card_lightorange}`}>
-            <div style={{ width: "100%" }}>
-              <div className={styles.programmingLang}>
-                <img
-                  src="/images/python_logo.png"
-                  className={styles.pythonLogo}
-                />
-                <span style={{ color: "#064EA4" }}>Python</span>
-              </div>
-              <div className={styles.jobTitle}>Software Engineer</div>
-              <div className={styles.desc_location_dollar}>
-                <img src="/images/location_blue_logo.png" />
-                <span className={styles.locationText}>Londan</span>
-              </div>
-              <div className={styles.desc_location_dollar}>
-                <img src="/images/dollar_blue_logo.png" />
-                <span className={styles.locationText}>£65,000</span>
-              </div>
-              <div
-                className={styles.desc_location_dollar}
-                style={{ color: "#064EA4" }}>
-                Odio mi amet commodo convallis nunc. Tincidunt mauris eu egestas
-                eget in aliquam.
-              </div>
-              <button type="button" className={`btn ${styles.btnViewJob}`}>
-                View the job
+              <button className={`jobs-button-next ${styles.btnIcon}`}>
+                <span className={styles.iconSpan}>
+                  <FontAwesomeIcon
+                    icon={faChevronRight}
+                    className={styles.icon}
+                  />
+                </span>
               </button>
-              <div className={styles.createdDate}>Posted on 29/08/2023</div>
             </div>
+            <div>View more jobs</div>
           </div>
         </div>
       </div>
+      {/* Latest Jobs section */}
     </div>
   );
 }

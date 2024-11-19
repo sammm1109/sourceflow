@@ -13,18 +13,36 @@ const SwiperComponent = ({
   loop = true,
   autoplay = { delay: 3000, disableOnInteraction: false }, // Explicitly disable interaction stopping autoplay
   showNavigation = false,
+  className = "",
+  tableSlidesPerView = 0,
+  prevEl = "",
+  nextEl = "",
 }) => {
+  console.log("prevEl", prevEl);
   return (
     <div className="scroll-footer-banner">
       <Swiper
         modules={[Navigation, Autoplay]}
         spaceBetween={spaceBetween}
         slidesPerView={slidesPerView}
-        navigation={showNavigation ? {} : false}
+        navigation={showNavigation ? { prevEl: prevEl, nextEl: nextEl } : false}
         loop={loop}
-        autoplay={autoplay}>
+        autoplay={autoplay}
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: tableSlidesPerView ? tableSlidesPerView : 3,
+          },
+          1024: {
+            slidesPerView: slidesPerView ? slidesPerView : 5,
+          },
+        }}>
         {slides.map((slideContent, index) => (
-          <SwiperSlide key={index}>{slideContent}</SwiperSlide>
+          <SwiperSlide key={index} className={className}>
+            {slideContent}
+          </SwiperSlide>
         ))}
       </Swiper>
     </div>

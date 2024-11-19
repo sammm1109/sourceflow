@@ -189,20 +189,28 @@
   background: #F99D76;
 }
 
+.jobSectionCont {
+  // position: relative;
+  // margin: 0 auto;
+  // width: 1050px;
+}
+
 .jobSectionRow {
-  position: relative;
-  display: flex;
+  width: 1148px;
   margin: 0 auto;
-  justify-content: space-between;
-  gap: 20px;
-  width: 1050px;
+  position: relative;
+}
+
+@media (max-width: 968px) {
+  .jobSectionRow {
+    width: auto;
+  }
 }
 
 .jobSectionCard {
-  border-radius: 20px;
-  width: calc(100% - 68%);
-  text-align: left;
+  border-radius: 18px;
   padding: 30px 40px;
+  text-align: left;
 }
 
 .jobTitle {
@@ -278,4 +286,41 @@
   line-height: 15px;
   font-weight: 300;
   color: #064EA4CC;
+}
+
+.jobSection_button{
+  text-align: left;
+  margin: 10px 0;
+}
+
+.btnIcon {
+  cursor: pointer;
+  z-index: 1;
+  border: 0;
+  background: transparent;
+  margin-right: 5px;
+}
+
+.icon {
+  color: #fff !important;
+}
+
+.icon:before {
+  background: rgba(255, 255, 255, .1)
+}
+
+.icon:disabled {
+  opacity: 0.5;
+}
+
+.iconSpan {
+  display: block;
+  position: relative;
+  padding: 8px 15px;
+  border-radius: 999px;
+  will-change: transform;
+  transform: translateY(-4px);
+  transition: transform .6s cubic-bezier(.3, .7, .4, 1);
+  border: var(--border-width) solid #0E2152;
+  background: #0E2152;
 }

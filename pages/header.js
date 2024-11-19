@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../styles/header.module.scss";
 
 export default function Header() {
   const [openDropdownId, setOpenDropdownId] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const menuList = () => {
     return [
@@ -55,6 +61,14 @@ export default function Header() {
     setOpenDropdownId(null);
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <header className={styles.homeHeader}>
       <div className={styles.headerContent}>
@@ -97,6 +111,24 @@ export default function Header() {
             </ul>
           </nav>
 
+          <div className={styles.rightButton}>
+            <button className={styles.uploadBtn}>Upload CV</button>
+            <button className={styles.contactUsBtn}>Contact Us</button>
+          </div>
+        </div>
+
+        {/* Mobile Section*/}
+        <div className={styles.mobileSection}>
+          <div
+            className={`${styles.hamburger} ${isMenuOpen ? styles.open : ""}`}
+            onClick={toggleMenu}>
+            <span className={styles.bar}></span>
+            <span className={styles.bar}></span>
+            <span className={styles.bar}></span>
+          </div>
+          <div className={styles.logo}>
+            <h1 className={styles.companyName}>Software Recruitment Co.</h1>
+          </div>
           <div className={styles.rightButton}>
             <button className={styles.uploadBtn}>Upload CV</button>
             <button className={styles.contactUsBtn}>Contact Us</button>

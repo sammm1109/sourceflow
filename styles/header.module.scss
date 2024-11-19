@@ -22,6 +22,7 @@
   width: 1300px;
   margin: 0 auto;
   min-height: 85px;
+  position: relative;
 }
 
 .logo {
@@ -38,6 +39,8 @@
 
 .nav {
   flex: 3;
+  display: flex;
+  justify-content: center;
 }
 
 .navList {
@@ -110,7 +113,6 @@
 
 .dropdown.open .dropdownMenu {
   display: block;
-  /* Show the dropdown when it's open */
 }
 
 .rightButton {
@@ -132,7 +134,8 @@
 }
 
 .uploadBtn:hover {
-  background-color: #005bb5;
+  background-color: #eedfa5;
+  border: 1px solid #fcdf69;
 }
 
 .contactUsBtn {
@@ -147,24 +150,67 @@
 }
 
 .contactUsBtn:hover {
-  background-color: #005bb5;
+  background-color: #fac7b1;
+  border: 1px solid #f99d75;
 }
 
-@media (max-width: 768px) {
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger .bar {
+  width: 30px;
+  height: 4px;
+  background-color: #064EA4;
+  border-radius: 5px;
+}
+
+.hamburger.open .bar {
+  background-color: #0070f3;
+}
+
+.mobileSection {
+  display: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 968px) {
   .header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
+    display: none;
   }
 
-  .logo {
-    margin-bottom: 10px;
+  .mobileSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    width: 100%;
+    min-height: 85px;
+    position: relative;
+    padding: 0 15px;
+  }
+
+  .companyName {
+    margin-bottom: 0;
+    margin-left: 15px;
+    font-size: 24px;
   }
 
   .nav {
     width: 100%;
     text-align: center;
     margin-top: 10px;
+    display: none;
+    /* Hide navigation on small screens by default */
+  }
+
+  .nav.show {
+    display: block;
+    /* Show navigation when hamburger is clicked */
   }
 
   .navList {
@@ -175,26 +221,24 @@
     margin: 10px 0;
   }
 
-  .loginButton {
+  .rightButton {
     width: 100%;
-    text-align: center;
-    margin-top: 20px;
   }
 
-  .loginBtn {
-    width: 100%;
-    padding: 12px 20px;
+  .hamburger {
+    display: flex;
+    /* Show hamburger icon on small screens */
   }
 }
 
-/* Extra small devices */
 @media (max-width: 480px) {
+  
   .companyName {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .navItem {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .loginBtn {
