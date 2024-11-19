@@ -42,3 +42,9 @@ li {
   list-style: none;
 }
 
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px !important;
+}

@@ -1,5 +1,6 @@
 // pages/_app.js
-import "../styles/global.scss"; // Global SCSS
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../styles/global.scss";
 import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }) {
