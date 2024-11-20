@@ -102,7 +102,7 @@ export default function Home() {
                       src="/images/python_logo.png"
                       className={styles.pythonLogo}
                     />
-                    <span style={{ color: job.cardColor }}>
+                    <span style={{ color: "#064EA4" }}>
                       {job.programmingLang}
                     </span>
                   </div>
