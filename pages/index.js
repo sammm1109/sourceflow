@@ -116,11 +116,25 @@ export default function Home() {
                   </div>
                   <div className={styles.desc_location_dollar}>
                     <img src={job.locationImg} />
-                    <span className={styles.locationText}>{job.location}</span>
+                    <span
+                      className={styles.locationText}
+                      style={{
+                        color:
+                          job.cardStyle === "card_blue" ? "#fff" : "#064EA4",
+                      }}>
+                      {job.location}
+                    </span>
                   </div>
                   <div className={styles.desc_location_dollar}>
                     <img src={job.salaryImg} />
-                    <span className={styles.locationText}>{job.salary}</span>
+                    <span
+                      className={styles.locationText}
+                      style={{
+                        color:
+                          job.cardStyle === "card_blue" ? "#fff" : "#064EA4",
+                      }}>
+                      {job.salary}
+                    </span>
                   </div>
                   <div
                     className={styles.desc_location_dollar}
