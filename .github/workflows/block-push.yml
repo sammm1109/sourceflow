@@ -1,0 +1,17 @@
+name: Block Push to Main
+
+on:
+  push:
+    branches:
+      - main # Replace with the branch you want to protect (e.g., 'main' or 'master')
+
+jobs:
+  block_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if the user is authorized
+        run: |
+          if [[ "${GITHUB_ACTOR}" != "sammm1109" ]]; then
+            echo "You do not have permission to push to the main branch!";
+            exit 1;
+          fi
