@@ -17,6 +17,7 @@ const SwiperComponent = ({
   tableSlidesPerView = 0,
   prevEl = "",
   nextEl = "",
+  children,
 }) => {
   console.log("prevEl", prevEl);
   return (

@@ -1,100 +1,28 @@
-import Layout from "../components/Layout";
-import styles from "../styles/home.module.scss"; // CSS module for specific page styles
+import { useState, useEffect } from "react";
+import Modal from "../components/modal";
+import styles from "../styles/home.module.scss";
 import SwiperComponent from "../components/swiperSlider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { SwiperSlide } from "swiper/react";
 import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
+import { latestJobsData, imageContentList } from "../utils/exampleData";
 
 export default function Home() {
-  const slidesContent = [
-    <img className={styles.partnerSectionImg} src="/images/microsoft.png" />,
-    <img className={styles.partnerSectionImg} src="/images/oracle.png" />,
-    <img className={styles.partnerSectionImg} src="/images/atlassian.png" />,
-    <img className={styles.partnerSectionImg} src="/images/cloudfare.png" />,
-    <img className={styles.partnerSectionImg} src="/images/vmware.png" />,
-  ];
+  const [showModal, setShowModal] = useState(false);
+  const [images, setImages] = useState([]);
+  const [jobs, setJobs] = useState([]);
 
-  const latestJobsSlidesContent1 = [
-    <div>asdasd</div>,
-    <div>asdasd</div>,
-    <div>asdasd</div>,
-  ];
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
 
-  const latestJobsSlidesContent = [
-    <div className={`${styles.jobSectionCard} ${styles.card_yellow}`}>
-      <div className={styles.programmingLang}>
-        <img src="/images/python_logo.png" className={styles.pythonLogo} />
-        <span style={{ color: "#064EA4" }}>Python</span>
-      </div>
-      <div className={styles.jobTitle}>Software Engineer</div>
-      <div className={styles.desc_location_dollar}>
-        <img src="/images/location_blue_logo.png" />
-        <span className={styles.locationText}>Londan</span>
-      </div>
-      <div className={styles.desc_location_dollar}>
-        <img src="/images/dollar_blue_logo.png" />
-        <span className={styles.locationText}>£65,000</span>
-      </div>
-      <div className={styles.desc_location_dollar} style={{ color: "#064EA4" }}>
-        Odio mi amet commodo convallis nunc. Tincidunt mauris eu egestas eget in
-        aliquam.
-      </div>
-      <button type="button" className={`btn ${styles.btnViewJob}`}>
-        View the job
-      </button>
-      <div className={styles.createdDate}>Posted on 29/08/2023</div>
-    </div>,
-    <div className={`${styles.jobSectionCard} ${styles.card_blue}`}>
-      <div className={styles.programmingLang}>
-        <img src="/images/python_logo.png" className={styles.pythonLogo} />
-        <span style={{ color: "#064EA4" }}>Python</span>
-      </div>
-      <div className={styles.jobTitle_white}>Software Engineer</div>
-      <div className={styles.desc_location_dollar}>
-        <img src="/images/location_white_logo.png" />
-        <span className={styles.locationText_White}>Londan</span>
-      </div>
-      <div className={styles.desc_location_dollar}>
-        <img src="/images/dollar_white_logo.png" />
-        <span className={styles.locationText_White}>£65,000</span>
-      </div>
-      <div className={styles.desc_location_dollar} style={{ color: "#fff" }}>
-        Odio mi amet commodo convallis nunc. Tincidunt mauris eu egestas eget in
-        aliquam.
-      </div>
-      <button type="button" className={`btn ${styles.btnViewJob}`}>
-        View the job
-      </button>
-      <div className={styles.createdDate} style={{ color: "#fff" }}>
-        Posted on 29/08/2023
-      </div>
-    </div>,
-    <div className={`${styles.jobSectionCard} ${styles.card_lightorange}`}>
-      <div className={styles.programmingLang}>
-        <img src="/images/python_logo.png" className={styles.pythonLogo} />
-        <span style={{ color: "#064EA4" }}>Python</span>
-      </div>
-      <div className={styles.jobTitle}>Software Engineer</div>
-      <div className={styles.desc_location_dollar}>
-        <img src="/images/location_blue_logo.png" />
-        <span className={styles.locationText}>Londan</span>
-      </div>
-      <div className={styles.desc_location_dollar}>
-        <img src="/images/dollar_blue_logo.png" />
-        <span className={styles.locationText}>£65,000</span>
-      </div>
-      <div className={styles.desc_location_dollar} style={{ color: "#064EA4" }}>
-        Odio mi amet commodo convallis nunc. Tincidunt mauris eu egestas eget in
-        aliquam.
-      </div>
-      <button type="button" className={`btn ${styles.btnViewJob}`}>
-        View the job
-      </button>
-      <div className={styles.createdDate}>Posted on 29/08/2023</div>
-    </div>,
-  ];
+  useEffect(() => {
+    const imagesData = imageContentList();
+    setImages(imagesData);
+    setJobs(latestJobsData);
+  }, []);
 
   return (
     <div className={styles.content}>
@@ -128,32 +56,88 @@ export default function Home() {
       {/* partner section */}
       <div className={styles.partnerSection}>
         <p style={{ color: "#D2D2D2" }}>Who we work with</p>
-        <SwiperComponent
-          slides={slidesContent}
-          spaceBetween={10}
-          slidesPerView={5}
-          loop={true}
-          autoplay={{ delay: 2000, disableOnInteraction: false }} // Autoplay config here
-          showNavigation={false}
-          className="swiper-partner-slide"
-        />
+        <div>
+          <SwiperComponent
+            slides={images.map((image, index) => (
+              <div key={index} className="swiper-partner-slide">
+                <img
+                  className="partnerSectionImg"
+                  src={image.src}
+                  alt={image.alt}
+                />
+              </div>
+            ))}
+            spaceBetween={10}
+            slidesPerView={5}
+            loop={true}
+            autoplay={{ delay: 2000, disableOnInteraction: false }} // Autoplay config here
+            showNavigation={false}
+          />
+        </div>
       </div>
 
       {/* Latest Jobs section */}
       <div className={styles.jobSection}>
         <h1 className={styles.jobSectionTitle}>Latest Jobs</h1>
         <div className={styles.jobSectionCont}>
-          <div className={styles.jobSectionRow}>
+          <div className="jobSectionRow">
             <SwiperComponent
-              slides={latestJobsSlidesContent}
+              slides={jobs.map((job) => (
+                <div
+                  key={job.id}
+                  className={`${styles.jobSectionCard} ${
+                    styles[job.cardStyle]
+                  }`}>
+                  <div className={styles.programmingLang}>
+                    <img
+                      src="/images/python_logo.png"
+                      className={styles.pythonLogo}
+                    />
+                    <span style={{ color: job.cardColor }}>
+                      {job.programmingLang}
+                    </span>
+                  </div>
+                  <div
+                    className={
+                      job.cardStyle === "card_blue"
+                        ? styles.jobTitle_white
+                        : styles.jobTitle
+                    }>
+                    {job.title}
+                  </div>
+                  <div className={styles.desc_location_dollar}>
+                    <img src={job.locationImg} />
+                    <span className={styles.locationText}>{job.location}</span>
+                  </div>
+                  <div className={styles.desc_location_dollar}>
+                    <img src={job.salaryImg} />
+                    <span className={styles.locationText}>{job.salary}</span>
+                  </div>
+                  <div
+                    className={styles.desc_location_dollar}
+                    style={{ color: job.cardColor }}>
+                    {job.description}
+                  </div>
+                  <button
+                    type="button"
+                    className={`btn ${styles[job.btnClass]}`}>
+                    View the job
+                  </button>
+                  <div
+                    className={styles.createdDate}
+                    style={{ color: job.cardColor }}>
+                    Posted on {job.createdDate}
+                  </div>
+                </div>
+              ))}
               spaceBetween={10}
               slidesPerView={3}
               loop={true}
               autoplay={false}
               showNavigation={true}
               tableSlidesPerView={1}
-              prevEl={".jobs-button-prev"}
-              nextEl={".jobs-button-next"}
+              prevEl=".jobs-button-prev"
+              nextEl=".jobs-button-next"
             />
           </div>
 
@@ -176,10 +160,19 @@ export default function Home() {
                 </span>
               </button>
             </div>
-            <div>View more jobs</div>
+            <div className={styles.viewMoreJobs} onClick={handleOpenModal}>
+              <u>View more jobs</u>
+            </div>
           </div>
         </div>
       </div>
+
+      <Modal show={showModal} onClose={handleCloseModal} title="View More Jobs">
+        <p>Please click the link below to view more.</p>
+        <a href="https://www.sourceflow.co.uk/jobs">
+          <u style={{ color: "blue" }}>https://www.sourceflow.co.uk/jobs</u>
+        </a>
+      </Modal>
       {/* Latest Jobs section */}
     </div>
   );
