@@ -80,7 +80,7 @@ export default function Header() {
                   }`}
                   onMouseEnter={() => handleMouseEnter(item.id)}
                   onMouseLeave={handleMouseLeave}>
-                  <a href="/" className={styles.navItem}>
+                  <a href="#" className={styles.navItem}>
                     {item.title}
                     <span className={styles.arrow}></span>
                   </a>
