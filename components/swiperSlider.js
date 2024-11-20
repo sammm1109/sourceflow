@@ -19,7 +19,6 @@ const SwiperComponent = ({
   nextEl = "",
   children,
 }) => {
-  console.log("prevEl", prevEl);
   return (
     <div className="scroll-footer-banner">
       <Swiper

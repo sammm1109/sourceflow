@@ -12,6 +12,7 @@
   right: 0;
   width: 100%;
   background: white;
+  padding: 0px 60px;
 }
 
 .header {
@@ -19,7 +20,7 @@
   justify-content: space-between;
   align-items: center;
   background: #fff;
-  width: 1300px;
+  width: 100%;
   margin: 0 auto;
   min-height: 85px;
   position: relative;
@@ -177,10 +178,89 @@
   display: none;
 }
 
+/* Mobile Navigation Styles */
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  z-index: 999;
+  transition: left 0.3s ease-in-out; 
+  padding-top: 60px;
+}
+
+.mobileMenu.open {
+  left: 0; 
+}
+
+.mobileMenu .navList {
+  flex-direction: column;
+}
+
+.mobileMenu .navItem {
+  font-size: 18px;
+  text-align: left;
+}
+
+.mobileMenu .dropdownMenu {
+  background-color: #444;
+  box-shadow: none;
+  margin-top: 10px;
+}
+
+.mobileMenu .dropdown.open .dropdownMenu {
+  display: block;
+}
+
+/* Close Button Styles */
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1000; 
+}
+
+.closeButton:hover {
+  color: #0070f3;
+}
+
+.mobileMenuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 998;
+  display: none;
+}
+
+.mobileMenuOverlay.open {
+  display: block; 
+}
+
 /* Responsive Styles */
+@media (max-width: 1024px) {
+  .navList {
+    gap:0px
+  }
+}
+
+
 @media (max-width: 968px) {
   .header {
     display: none;
+  }
+
+  .headerContent {
+    padding: 0 10px;
   }
 
   .mobileSection {
@@ -200,39 +280,78 @@
     font-size: 24px;
   }
 
-  .nav {
-    width: 100%;
-    text-align: center;
-    margin-top: 10px;
-    display: none;
-    /* Hide navigation on small screens by default */
-  }
-
-  .nav.show {
-    display: block;
-    /* Show navigation when hamburger is clicked */
-  }
-
-  .navList {
-    flex-direction: column;
-  }
-
-  .navItem {
-    margin: 10px 0;
+  .hamburger {
+    display: flex;
   }
 
   .rightButton {
-    width: 100%;
+    display: none;
   }
 
-  .hamburger {
+  .mobileMenu.open {
+    left: 0;
+  }
+
+  .mobileMenuOverlay.open {
+    display: block;
+  }
+
+
+  /* Main navigation list (header) */
+  .navList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
     display: flex;
-    /* Show hamburger icon on small screens */
+    background-color: transparent;
+  }
+
+  .navItem {
+    position: relative;
+    padding: 12px 20px;
+    cursor: pointer;
+    color: #D7E7FB;
+    background-color: #000;
+    transition: background-color 0.3s ease;
+  }
+
+  .navItem a {
+    display: block;
+    color: white;
+    text-decoration: none;
+  }
+
+  .navItem:hover {
+    color: #D7E7FB;
+  }
+
+  .dropdownItem {
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+    margin: 10px 30px;
+  }
+
+  .dropdownItem a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+  }
+
+  .dropdownItem:hover {
+    background-color: #e0e0e0;
+  }
+
+  .navItem.open>a::after {
+    content: ' ▼';
+    font-size: 14px;
+    margin-left: 10px;
   }
 }
 
 @media (max-width: 480px) {
-  
   .companyName {
     font-size: 18px;
   }
@@ -243,5 +362,13 @@
 
   .loginBtn {
     font-size: 16px;
+  }
+
+  .rightButton {
+    display: none;
+  }
+
+  .mobileSection {
+    min-height: 65px;
   }
 }

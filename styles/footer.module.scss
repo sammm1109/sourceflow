@@ -4,13 +4,13 @@
 
 .util {
   width: 100%;
-  padding: 50px 0 40px 0;
+  padding: 50px 60px;
   border-top: 1px solid #064EA4;
 }
 
 .footer .util .inner {
   position: relative;
-  width: 1300px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -68,4 +68,54 @@
 
 .sitemapLink:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 968px) {
+  .footer .util .inner {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer .util .inner {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer .util .inner .sitemap {
+    justify-content: space-between;
+  }
+
+  .sitemapTitle {
+    padding-bottom: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer .util .inner {
+    width: 100%;
+  }
+
+  .footer .util .inner .sitemap {
+    justify-content:flex-start;
+    flex-direction: column;
+  }
+
+  .sitemapTitle {
+    font-size: 25px;
+    padding-bottom: 10px;
+  }
+
+  .siteItem {
+    margin-right: 0px;
+  }
+
+  .sitemapLink {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: white;
+    text-decoration: none;
+  }
 }

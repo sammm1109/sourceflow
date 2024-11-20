@@ -27,29 +27,38 @@ export default function Home() {
   return (
     <div className={styles.content}>
       {/* Banner Section */}
-      <div className={`row ${styles.banner_outer}`}>
-        <div className={`col-12 col-md-8 ${styles.leftBanner}`}>
-          <p style={{ marginBottom: "20px" }}>
-            Software Recruitment Specialists
-          </p>
-          <h1 className={styles.bannerTitle}>Elevate your career</h1>
-          <div className={`input-group ${styles.searchBar}`}>
-            <input
-              type="search"
-              className={`form-control ${styles.bannerInput}`}
-              placeholder="E.g. networking"
-              aria-label="Search"
-              aria-describedby="search-addon"
-            />
-            <button
-              type="button"
-              className={`btn ${styles.bannerSearchBtnInput}`}>
-              Search jobs
-            </button>
+      <div className={styles.banner_outer}>
+        <div className={styles.banner_wrap}>
+          <div className={`col-md-8 ${styles.leftBanner}`}>
+            <div className="col-12 col-md-12">
+              <p style={{ marginBottom: "20px" }}>
+                Software Recruitment Specialists
+              </p>
+              <h1 className={styles.bannerTitle}>Elevate your career</h1>
+              <div className={`input-group ${styles.searchBar}`}>
+                <input
+                  type="search"
+                  className={`form-control ${styles.bannerInput}`}
+                  placeholder="E.g. networking"
+                  aria-label="Search"
+                  aria-describedby="search-addon"
+                />
+                <button
+                  type="button"
+                  className={`btn ${styles.bannerSearchBtnInput}`}>
+                  Search jobs
+                </button>
+              </div>
+            </div>
+            <div
+              className={`col-6 d-none d-sm-block d-md-none ${styles.rightBanner}`}>
+              <img className={styles.profileImg} src="/images/profile.png" />
+            </div>
           </div>
-        </div>
-        <div className={`col-12 col-md-4 ${styles.rightBanner}`}>
-          <img className={styles.profileImg} src="/images/profile.png" />
+          <div
+            className={`col-12 col-md-4 d-none d-md-block ${styles.rightBanner}`}>
+            <img className={styles.profileImg} src="/images/profile.png" />
+          </div>
         </div>
       </div>
 
