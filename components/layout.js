@@ -1,7 +1,7 @@
 import Header from "../pages/header";
 import Footer from "../pages/footer";
 
-export default function Layout({ children }) {
+const Layout = ({ children }) => {
   return (
     <>
       <Header />
@@ -10,4 +10,6 @@ export default function Layout({ children }) {
       <Footer /> {/* Add Footer component */}
     </>
   );
-}
+};
+
+export default Layout;
