@@ -31,7 +31,7 @@ export default function Home() {
         <div className={styles.banner_wrap}>
           <div className={`col-md-8 ${styles.leftBanner}`}>
             <div className="col-12 col-md-12">
-              <p style={{ marginBottom: "20px" }}>
+              <p className={styles.bannerSmallTitle}>
                 Software Recruitment Specialists
               </p>
               <h1 className={styles.bannerTitle}>Elevate your career</h1>
