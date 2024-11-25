@@ -49,3 +49,14 @@ li {
   align-items: center;
   height: 80px !important;
 }
+
+.rotate-in {
+  opacity: 0;
+  transform: rotate(-90deg);
+  transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+.rotate-in.visible {
+  opacity: 1;
+  transform: rotate(0deg);
+}

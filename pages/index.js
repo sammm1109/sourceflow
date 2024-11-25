@@ -14,6 +14,7 @@ export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [images, setImages] = useState([]);
   const [jobs, setJobs] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleOpenModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
@@ -22,6 +23,7 @@ export default function Home() {
     const imagesData = imageContentList();
     setImages(imagesData);
     setJobs(latestJobsData);
+    setIsVisible(true);
   }, []);
 
   return (
@@ -52,12 +54,22 @@ export default function Home() {
             </div>
             <div
               className={`col-6 d-none d-sm-block d-md-none ${styles.rightBanner}`}>
-              <img className={styles.profileImg} src="/images/profile.png" />
+              <img
+                className={`rotate-in ${isVisible ? "visible" : ""} ${
+                  styles.profileImg
+                }`}
+                src="/images/profile.png"
+              />
             </div>
           </div>
           <div
             className={`col-12 col-md-4 d-none d-md-block ${styles.rightBanner}`}>
-            <img className={styles.profileImg} src="/images/profile.png" />
+            <img
+              className={`rotate-in ${isVisible ? "visible" : ""} ${
+                styles.profileImg
+              }`}
+              src="/images/profile.png"
+            />
           </div>
         </div>
       </div>
